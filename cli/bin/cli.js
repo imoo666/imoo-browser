@@ -2,8 +2,8 @@
 
 /**
  * imoo-browser CLI entry.
- * Usage: node cli.js                    - start daemon (WebSocket server)
- *        node cli.js --command "..."    - send command to daemon
+ * Usage: node cli.js                    - start server (WebSocket server)
+ *        node cli.js --command "..."    - send command to server
  */
 
 import { createServer, closeServer } from '../src/server.js';
@@ -24,7 +24,7 @@ function nextId() {
   return `cmd-${++commandId}`;
 }
 
-/** 连接 daemon 并执行命令 */
+/** 连接 server 并执行命令 */
 async function connectAndRunCommands(cmdStr) {
   return new Promise((resolve) => {
     const ws = new WebSocket(`ws://localhost:${PORT}`);
@@ -131,13 +131,13 @@ function parseCommandToAction(cmd) {
 async function commandMode(cmdStr) {
   const connected = await connectAndRunCommands(cmdStr);
   if (!connected) {
-    throw new Error('Failed to connect to daemon. Please ensure daemon is running: pnpm cli');
+    throw new Error('Failed to connect to server. Please ensure server is running: pnpm cli');
   }
 }
 
-async function daemonMode() {
+async function serverMode() {
   await createServer(PORT, { onPageEvent: () => {}, onCommandResponse: () => {} });
-  console.log(`[imoo-browser] Daemon running on ws://localhost:${PORT}`);
+  console.log(`[imoo-browser] Server running on ws://localhost:${PORT}`);
   console.log(`Send commands with: node cli/bin/cli.js --command "navigate https://example.com"`);
   console.log(`Press Ctrl+C to stop.\n`);
   process.on('SIGINT', () => {
@@ -154,12 +154,12 @@ const cmdIndex = args.indexOf('--command');
 const cmdStr = cmdIndex >= 0 ? args[cmdIndex + 1] : null;
 
 if (cmdStr) {
-  // Command mode: connect to daemon and execute
+  // Command mode: connect to server and execute
   commandMode(cmdStr).catch((err) => {
     console.error(err.message);
     process.exit(1);
   });
 } else {
-  // Default: start daemon
-  daemonMode().catch(console.error);
+  // Default: start server
+  serverMode().catch(console.error);
 }

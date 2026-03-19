@@ -3,7 +3,7 @@
   "name": "imoo-browser",
   "version": "1.0.0",
   "description": "AI 命令行浏览器控制插件 - 监听控制台、网络请求、错误，支持点击、输入等操作",
-  "permissions": ["storage", "activeTab", "scripting", "alarms"],
+  "permissions": ["storage", "activeTab", "scripting", "alarms", "debugger", "cookies", "tabs"],
   "host_permissions": ["<all_urls>", "ws://localhost:*"],
   "action": {
     "default_popup": "popup.html",

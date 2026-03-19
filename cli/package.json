@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "CLI for imoo-browser extension",
   "type": "module",
-  "main": "bin/cli.js",
+  "main": "src/puppeteer-wrapper.js",
+  "exports": {
+    ".": "./src/puppeteer-wrapper.js",
+    "./cli": "./bin/cli.js"
+  },
   "bin": {
     "imoo-browser": "./bin/cli.js"
   },

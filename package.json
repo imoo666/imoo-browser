@@ -5,6 +5,8 @@
   "private": true,
   "workspaces": ["cli"],
   "scripts": {
-    "cli": "node cli/bin/cli.js"
+    "cli": "node cli/bin/cli.js",
+    "cli:dev": "node cli/bin/cli.js",
+    "cli:server": "node cli/bin/cli.js --server"
   }
 }
