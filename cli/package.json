@@ -1,0 +1,18 @@
+{
+  "name": "imoo-browser-cli",
+  "version": "1.0.0",
+  "description": "CLI for imoo-browser extension",
+  "type": "module",
+  "main": "bin/cli.js",
+  "bin": {
+    "imoo-browser": "./bin/cli.js"
+  },
+  "scripts": {
+    "dev": "node bin/cli.js",
+    "start": "node bin/cli.js"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "ws": "^8.18.0"
+  }
+}

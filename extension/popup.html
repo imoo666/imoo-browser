@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { width: 200px; padding: 12px; font-family: system-ui; font-size: 13px; margin: 0; }
+    .status { margin-bottom: 10px; }
+    .status.connected { color: #0a0; }
+    .status.disconnected { color: #c00; }
+    button { width: 100%; padding: 8px; cursor: pointer; }
+    p { margin: 0 0 8px 0; color: #666; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="status" id="status">检查中...</div>
+  <p>CLI 需先启动: pnpm cli:dev</p>
+  <button id="reconnect">重新连接</button>
+  <script src="popup.js"></script>
+</body>
+</html>
