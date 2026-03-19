@@ -8,7 +8,6 @@
     "imoo-browser": "./bin/cli.js"
   },
   "scripts": {
-    "dev": "node bin/cli.js",
     "start": "node bin/cli.js"
   },
   "dependencies": {
